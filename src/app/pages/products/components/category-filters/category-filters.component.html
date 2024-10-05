@@ -1,0 +1,53 @@
+<!-- Botón de filtro para pantallas pequeñas -->
+<div class="block md:hidden">
+  <button (click)="toggleFilter()" class="text-blueColor border p-2 bg-white flex items-center justify-center w-1/2 gap-1">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+    </svg>
+
+    <i class="fas fa-filter"></i> Filtrar
+  </button>
+</div>
+
+<!-- Sección de filtros -->
+<div class="m-5 p-4 rounded-2xl border-2 bg-white shadow-md" [ngClass]="{'hidden': !isFilterOpen && !isDesktop, 'block': isFilterOpen || isDesktop}">
+  <h2 class="text-lg font-bold text-blueColor">Filtrar por</h2>
+
+  <hr class="mt-4">
+
+  <!-- Filtro de categorías -->
+  <div class="my-4">
+    <div class="flex flex-col">
+      <a *ngFor="let category of categories"
+         href="#"
+         class="text-black hover:underline mb-1"
+         (click)="$event.preventDefault();">
+        {{ category }}
+      </a>
+    </div>
+  </div>
+
+  <hr class="mb-4">
+
+  <!-- Filtro de precio -->
+  <div class="mb-4">
+    <label for="price" class="block font-bold text-lg text-blueColor">Precio</label>
+    <input type="range" id="price" min="0" max="1000" step="10" [(ngModel)]="price" class="w-full mt-4">
+    <span class="block mt-2 text-gray-700">Hasta: ${{ price }}</span>
+  </div>
+
+  <hr class="mb-4">
+
+  <!-- Filtro de marcas -->
+  <div class="mb-4">
+    <h3 class="font-bold text-lg mb-2 text-blueColor">Marca</h3>
+    <div *ngFor="let brand of brands">
+      <label class="inline-flex items-center">
+        <input type="checkbox" (change)="toggleBrandSelection(brand)" class="form-checkbox" [checked]="selectedBrands.includes(brand)">
+        <span class="ml-2">{{ brand }}</span>
+      </label>
+    </div>
+  </div>
+
+  <button class="w-full bg-yellowColor text-white p-2 rounded">Aplicar Filtros</button>
+</div>

@@ -1,0 +1,20 @@
+<div class="bg-slate-50 min-h-screen 2xl:flex 2xl:flex-col 2xl:justify-center 2xl:items-center">
+  <!-- Mensaje de envío -->
+  <div class="bg-yellowColor py-1 w-full">
+    <p class="text-white text-center font-medium text-lg mx-2">Envíos gratis por pedidos mayores a $200.000 COP</p>
+  </div>
+
+  <!-- Contenedor principal que agrupa los filtros y productos -->
+  <div class="flex flex-col md:flex-row md:gap-5 lg:mx-10 2xl:w-4/5">
+
+    <!-- Sección de filtros -->
+    <div class="md:w-1/4">
+      <products-category-filters></products-category-filters>
+    </div>
+
+    <!-- Sección de productos -->
+    <div class="md:w-3/4">
+      <products-list></products-list>
+    </div>
+  </div>
+</div>
