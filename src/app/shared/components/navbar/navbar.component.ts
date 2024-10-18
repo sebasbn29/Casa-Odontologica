@@ -4,13 +4,13 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'shared-navbar',
   templateUrl: './navbar.component.html',
-  styles: ``
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
   isMenuOpen = false;
   isUserMenuOpen = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;

@@ -1,10 +1,10 @@
-<nav class="bg-white">
+<nav class="bg-white relative z-50">
   <div class="mx-auto max-w-5xl px-2 py-3 lg:px-8 md:px-8 lg:flex lg:justify-center">
     <div class="relative flex h-16 items-center justify-between">
       <!-- Botón para el menú móvil -->
-      <div class="absolute inset-y-0 left-0 flex items-center lg:hidden">
+      <div class="relative inset-y-0 mx-2 flex items-center lg:hidden">
         <button (click)="toggleMenu()"
-          class="inline-flex items-center justify-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+          class="inline-flex items-center justify-center p-2 rounded-lg text-blueColor hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
           aria-expanded="false">
           <span class="sr-only">Abrir menú principal</span>
           <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -19,10 +19,9 @@
       </div>
 
       <!-- Logo de Casa Odontológica -->
-      <div class="flex-shrink-0 mx-auto lg:mx-0">
-        <!-- absolute inset-0 flex items-center justify-center lg:static lg:justify-start -->
+      <div class="mx-auto lg:mx-0">
         <a href="/inicio">
-          <img class="h-11 w-auto hidden lg:block" src=".././assets/images/logos_co/logo_complete.png"
+          <img class="h-11 w-auto hidden lg:block" src=".././assets/images/logos_co/logo_CO.png"
             alt="Casa Odontológica">
           <img class="h-11 w-auto block lg:hidden" src=".././assets/images/logos_co/logo_CO.png"
             alt="Casa Odontológica">
@@ -32,33 +31,40 @@
       <!-- Menú principal (pantallas grandes) -->
       <div class="hidden lg:block lg:ml-7">
         <div class="flex space-x-4">
-          <a (click)="toggleUserMenu()" class=" text-blueColor hover:bg-gray-300 hover:text-black px-3 py-2 rounded-lg text-base
-            font-semibold">Productos</a>
-          <a href="/nosotros"
-            class="text-blueColor hover:bg-gray-300 hover:text-black px-3 py-2 rounded-lg text-base font-semibold">Nosotros</a>
-          <a href="/sedes"
-            class="text-blueColor hover:bg-gray-300 hover:text-black px-3 py-2 rounded-lg text-base font-semibold">Sedes</a>
-          <a href="/ayuda-pqr"
-            class="text-blueColor hover:bg-gray-300 hover:text-black px-3 py-2 rounded-lg text-base font-semibold whitespace-nowrap">Ayuda
-            / PQR</a>
-          <div *ngIf="isUserMenuOpen"
-            class="origin-top-left absolute left-36 mt-12 w-40 rounded-xl border shadow-lg p-2 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-            <a href="#" class="block px-4 py-1 text-base text-gray-700">Brackets</a>
-            <a href="#" class="block px-4 py-1 text-base text-gray-700">Alambres</a>
-            <a href="#" class="block px-4 py-1 text-base text-gray-700">Ligaduras</a>
-            <a href="#" class="block px-4 py-1 text-base text-gray-700">Elásticos</a>
-            <a href="#" class="block px-4 py-1 text-base text-gray-700">Herramientas</a>
-            <a href="#" class="block px-4 py-1 text-base text-gray-700">Accesorios</a>
-            <a href="/productos" class="block px-4 py-1 text-base text-gray-700">Ver todo</a>
-          </div>
+          <a href="/productos" class="relative text-blueColor px-3 py-2 text-base font-semibold transition duration-300 ease-in-out
+             hover:text-black after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0
+             after:h-[2px] after:bg-blueColor after:transition-all after:duration-300 hover:after:w-full">
+            Productos
+          </a>
+          <a href="/nosotros" class="relative text-blueColor px-3 py-2 text-base font-semibold transition duration-300 ease-in-out
+             hover:text-black after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0
+             after:h-[2px] after:bg-blueColor after:transition-all after:duration-300 hover:after:w-full">
+            Nosotros
+          </a>
+          <a href="/sedes" class="relative text-blueColor px-3 py-2 text-base font-semibold transition duration-300 ease-in-out
+             hover:text-black after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0
+             after:h-[2px] after:bg-blueColor after:transition-all after:duration-300 hover:after:w-full">
+            Sedes
+          </a>
+          <a href="/eventos" class="relative text-blueColor px-3 py-2 text-base font-semibold transition duration-300 ease-in-out
+             hover:text-black after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0
+             after:h-[2px] after:bg-blueColor after:transition-all after:duration-300 hover:after:w-full">
+            Eventos
+          </a>
+          <a href="/ayuda-pqr" class="relative text-blueColor px-3 py-2 text-base font-semibold transition duration-300 ease-in-out
+             hover:text-black whitespace-nowrap after:content-[''] after:absolute after:left-0 after:bottom-0
+             after:w-0 after:h-[2px] after:bg-blueColor after:transition-all after:duration-300 hover:after:w-full">
+            Ayuda / PQR
+          </a>
         </div>
       </div>
 
+
       <!-- Barra de búsqueda (solo visible en pantallas grandes) -->
       <div class="hidden lg:block flex-1 items-center justify-center lg:items-stretch lg:justify-end">
-        <div class="relative w-5/6 mx-6 ">
+        <div class="relative w-5/6 mx-4 ">
           <input id="search" name="search"
-            class="block justify-center pl-10 pr-6 py-1 border rounded-lg leading-5 bg-gray-50 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-1 focus:ring-slate-500 focus:border-slate-500 lg:text-base"
+            class="block justify-center pl-10 py-1 border rounded-lg leading-5 bg-gray-50 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-1 focus:ring-slate-500 focus:border-slate-500 lg:text-base"
             placeholder="Buscar..." type="search">
           <div class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -81,37 +87,39 @@
           </svg>
         </button>
 
-        <div class="ml-3">
-          <button (click)="redirectToLogin()" class="p-1 text-blueColor hover:text-gray-800 flex">
-            <span class="sr-only">Iniciar sesión</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="size-7">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-            </svg>
-          </button>
-        </div>
+
       </div>
     </div>
   </div>
 
+  <!-- Overlay oscuro cuando el menú esté abierto -->
+  <div *ngIf="isMenuOpen" class="fixed inset-0 bg-black opacity-50 z-40 transition-opacity duration-300 ease-out"></div>
+
   <!-- Menú móvil -->
-  <div *ngIf="isMenuOpen" class="lg:hidden">
-    <div class="px-2 pt-2 pb-3 space-y-1">
+  <div *ngIf="isMenuOpen"
+    class="fixed inset-y-0 left-0 w-64 bg-white z-50 transform transition-transform duration-300 ease-out"
+    [ngClass]="{'-translate-x-full': !isMenuOpen, 'translate-x-0': isMenuOpen} ">
+    <div class="mx-4">
+      <!-- Botón para cerrar el menú móvil (icono de 'X') -->
+      <button (click)="toggleMenu()"
+        class="p-2 my-4 rounded-lginline-flex items-center justify-center rounded-lg text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
       <a href="/productos"
         class="block px-3 py-2 rounded-lg text-base font-medium text-gray-500 hover:bg-gray-300">Productos</a>
       <a href="/nosotros"
         class="block px-3 py-2 rounded-lg text-base font-medium text-gray-500 hover:bg-gray-300">Nosotros</a>
       <a href="/sedes"
         class="block px-3 py-2 rounded-lg text-base font-medium text-gray-500 hover:bg-gray-300">Sedes</a>
+      <a href="/eventos"
+        class="block px-3 py-2 rounded-lg text-base font-medium text-gray-500 hover:bg-gray-300">Eventos</a>
       <a href="/ayuda-pqr"
         class="block px-3 py-2 rounded-lg text-base font-medium text-gray-500 hover:bg-gray-300">Ayuda / PQR</a>
 
-      <div class="mt-3">
-        <input id="mobile-search" name="mobile-search"
-          class="block w-full pl-3 pr-3 py-2 border border-gray-300 rounded-lg leading-5 bg-gray-100 placeholder-gray-500 focus:outline-none focus:bg-white focus:ring-1 focus:ring-slate-500 focus:border-slate-500"
-          placeholder="Buscar..." type="search">
-      </div>
     </div>
   </div>
 </nav>

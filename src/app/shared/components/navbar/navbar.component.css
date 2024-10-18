@@ -1,0 +1,12 @@
+/* Transición inicial, oculto por defecto */
+.menu {
+  transform: translateX(100%); /* Mueve el menú fuera de la pantalla */
+  opacity: 0; /* Invisible */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Transición suave */
+}
+
+/* Clase que se aplica cuando el menú está abierto */
+.menu-open {
+  transform: translateX(0); /* Mueve el menú a su posición visible */
+  opacity: 1; /* Totalmente visible */
+}

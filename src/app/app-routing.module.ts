@@ -7,6 +7,7 @@ import { BranchesComponent } from './pages/branches/branches.component';
 import { HelpPqrComponent } from './pages/help-pqr/help-pqr.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { EventsComponent } from './pages/events/events.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
       { path: 'productos', component: ProductsComponent },
       { path: 'nosotros', component: AboutComponent },
       { path: 'sedes', component: BranchesComponent },
-      { path: 'ayuda-pqr', component: HelpPqrComponent }
+      { path: 'eventos', component: EventsComponent },
+      { path: 'ayuda-pqr', component: HelpPqrComponent },
     ]
   },
   {

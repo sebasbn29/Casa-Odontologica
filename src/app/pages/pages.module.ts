@@ -9,6 +9,7 @@ import { HomeModule } from './home/home.module';
 import { BranchInfoComponent } from './branches/components/branch-info/branch-info.component';
 import { BranchMapComponent } from './branches/components/branch-map/branch-map.component';
 import { ProductsModule } from './products/products.module';
+import { EventsComponent } from './events/events.component';
 
 
 
@@ -18,7 +19,8 @@ import { ProductsModule } from './products/products.module';
     BranchesComponent,
     AboutComponent,
     BranchInfoComponent,
-    BranchMapComponent
+    BranchMapComponent,
+    EventsComponent
   ],
   imports: [
     CommonModule,
