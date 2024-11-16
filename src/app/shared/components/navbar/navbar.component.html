@@ -61,11 +61,11 @@
 
 
       <!-- Barra de búsqueda (solo visible en pantallas grandes) -->
-      <div class="hidden lg:block flex-1 items-center justify-center lg:items-stretch lg:justify-end">
-        <div class="relative w-5/6 mx-4 ">
+      <div *ngIf="showSearchBar" class="hidden lg:block flex-1 items-center justify-center lg:items-stretch lg:justify-end">
+        <div class="relative w-5/6 mx-4">
           <input id="search" name="search"
             class="block justify-center pl-10 py-1 border rounded-lg leading-5 bg-gray-50 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-1 focus:ring-slate-500 focus:border-slate-500 lg:text-base"
-            placeholder="Buscar..." type="search">
+            placeholder="Buscar..." type="search" (keydown)="onSearch($event)">
           <div class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="size-5">
@@ -76,9 +76,11 @@
         </div>
       </div>
 
+
       <!-- Iconos de carrito y perfil -->
       <div class="mx-4 flex items-center">
-        <button class="relative p-1 text-blueColor hover:text-gray-800">
+
+        <button (click)="toggleCart()" class="relative p-1 text-blueColor hover:text-gray-800">
           <span class="sr-only">Carrito</span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
             class="size-6">
@@ -86,6 +88,9 @@
               d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
           </svg>
         </button>
+
+        <!-- Cart menu -->
+        <app-cart [isOpen]="isCartOpen"></app-cart>
 
 
       </div>
@@ -99,6 +104,7 @@
   <div *ngIf="isMenuOpen"
     class="fixed inset-y-0 left-0 w-64 bg-white z-50 transform transition-transform duration-300 ease-out"
     [ngClass]="{'-translate-x-full': !isMenuOpen, 'translate-x-0': isMenuOpen} ">
+
     <div class="mx-4">
       <!-- Botón para cerrar el menú móvil (icono de 'X') -->
       <button (click)="toggleMenu()"
@@ -109,6 +115,22 @@
         </svg>
       </button>
 
+      <!-- Barra de búsqueda dentro del menú móvil -->
+      <div *ngIf="showSearchBar" class="lg:hidden relative w-11/12 mr-10 ml-2 mb-4">
+        <input id="search" name="search"
+          class="block w-full pl-10 py-1.5 border rounded-lg leading-5 bg-gray-50 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-1 focus:ring-slate-500 focus:border-slate-500 text-base"
+          placeholder="Buscar..." type="search" (keydown)="onSearch($event)">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+          </svg>
+        </div>
+      </div>
+
+
+      <!-- Opciones del menú móvil -->
       <a href="/productos"
         class="block px-3 py-2 rounded-lg text-base font-medium text-gray-500 hover:bg-gray-300">Productos</a>
       <a href="/nosotros"
@@ -122,4 +144,5 @@
 
     </div>
   </div>
+
 </nav>

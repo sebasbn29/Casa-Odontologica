@@ -23,7 +23,10 @@ import { BackToTopComponent } from './components/back-to-top/back-to-top.compone
     BackToTopComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
+  exports: [
+    NewProductsComponent,
+  ]
 })
 export class HomeModule { }

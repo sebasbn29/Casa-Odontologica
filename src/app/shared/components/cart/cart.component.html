@@ -1,0 +1,15 @@
+<div *ngIf="isOpen" class="absolute right-0 mt-7 w-64 bg-white shadow-lg rounded-md p-4 border">
+  <h3 class="font-semibold text-lg mb-2">Mi Carrito</h3>
+
+  <ng-container *ngIf="cartItems.length > 0; else emptyCart">
+    <div *ngFor="let item of cartItems" class="flex justify-between items-center mb-2">
+      <span>{{ item.name }}</span>
+      <span class="font-semibold">${{ item.price }}</span>
+    </div>
+    <!-- <button class="w-full bg-blueColor text-white p-2 mt-4 rounded">Ir al pago</button> -->
+  </ng-container>
+
+  <ng-template #emptyCart>
+    <p class="text-gray-500">Tu carrito está vacío.</p>
+  </ng-template>
+</div>

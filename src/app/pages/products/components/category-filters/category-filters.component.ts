@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { SearchService } from '../../../../shared/services/search.service';
 
 @Component({
   selector: 'products-category-filters',
@@ -6,29 +7,35 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styles: ``
 })
 export class CategoryFiltersComponent implements OnInit {
-  isFilterOpen = false; // Estado del modal
-  isSmallScreen = true; // Detecta el tamaño de la pantalla
-  categories = ['Brackets', 'Alambres', 'Ligaduras', 'Elásticos', 'Herramientas', 'Accesorios'];
-  brands = ['Marca 1', 'Marca 2', 'Marca 3'];
+  isFilterOpen = false;
+  isSmallScreen = true;
+  categories = ['Brackets', 'Alambres', 'Sujeción', 'Herramientas', 'Accesorios', 'Materiales'];
+  brands = ['Eufar', 'Dentsply Sirona', 'Gospa'];
   selectedBrands: string[] = [];
+  selectedCategory: string | null = null;
+
+  constructor(private searchService: SearchService) {}
 
   ngOnInit() {
     this.checkScreenSize();
   }
 
-  // Detecta el cambio de tamaño de la pantalla
   @HostListener('window:resize', [])
   onResize() {
     this.checkScreenSize();
   }
 
-  // Verifica si la pantalla es pequeña o grande
   checkScreenSize() {
-    this.isSmallScreen = window.innerWidth < 768; // Cambia el umbral según tus necesidades
+    this.isSmallScreen = window.innerWidth < 768;
   }
 
   toggleFilter() {
     this.isFilterOpen = !this.isFilterOpen;
+  }
+
+  selectCategory(category: string) {
+    this.selectedCategory = category;
+    this.searchService.setCategoryFilter(category);
   }
 
   toggleBrandSelection(brand: string) {
@@ -38,10 +45,16 @@ export class CategoryFiltersComponent implements OnInit {
     } else {
       this.selectedBrands.push(brand);
     }
+    this.searchService.setBrandFilter(this.selectedBrands);
   }
 
-  applyFilters() {
-    console.log('Filtros aplicados:', this.selectedBrands);
-    this.toggleFilter();
+  clearFilters() {
+    this.selectedBrands = [];
+    this.selectedCategory = null;
+    this.searchService.clearFilters();
+  }
+
+  hasActiveFilters(): boolean {
+    return this.selectedBrands.length > 0 || this.selectedCategory !== null;
   }
 }

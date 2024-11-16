@@ -10,6 +10,10 @@ import { BranchInfoComponent } from './branches/components/branch-info/branch-in
 import { BranchMapComponent } from './branches/components/branch-map/branch-map.component';
 import { ProductsModule } from './products/products.module';
 import { EventsComponent } from './events/events.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -20,12 +24,15 @@ import { EventsComponent } from './events/events.component';
     AboutComponent,
     BranchInfoComponent,
     BranchMapComponent,
-    EventsComponent
+    EventsComponent,
+    ProductDetailComponent,
   ],
   imports: [
     CommonModule,
     HomeModule,
     ProductsModule,
-  ]
+    HttpClientModule,
+    FormsModule
+  ],
 })
 export class PagesModule { }

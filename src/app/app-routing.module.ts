@@ -8,6 +8,7 @@ import { HelpPqrComponent } from './pages/help-pqr/help-pqr.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { EventsComponent } from './pages/events/events.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'sedes', component: BranchesComponent },
       { path: 'eventos', component: EventsComponent },
       { path: 'ayuda-pqr', component: HelpPqrComponent },
+      { path: 'productos/:id', component: ProductDetailComponent },
     ]
   },
   {

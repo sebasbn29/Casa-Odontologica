@@ -1,121 +1,37 @@
-<div class="text-start" data-aos="fade-up">
-<div class="container mx-auto px-4 py-8">
-  <!-- Texto principal -->
-  <h2 class="text-3xl font-bold uppercase mb-8 text-center text-blueColor">Nuevos productos</h2>
+<div class="text-start">
+  <div class="container mx-auto px-4 py-7">
+    <h2 class="text-3xl font-bold uppercase mb-4 text-center text-blueColor">Algunos productos</h2>
 
-  <!-- Contenedor de productos con desplazamiento horizontal -->
-  <div class="overflow-x-auto flex xl:justify-center">
-    <div class="flex space-x-6 ">
-      <!-- Producto 1 -->
-      <div class="border rounded-lg overflow-hidden flex-shrink-0 w-52 md:w-64">
-        <img src="https://picsum.photos/220/201" alt="Producto 1" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-lg font-bold">Producto 1</h3>
-          <!-- Calificación (3 de 5 estrellas) -->
-          <div class="flex items-center">
-            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
-            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
-            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
-            <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
-            <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
+    <div class="overflow-x-auto flex xl:justify-center py-3">
+      <div class="flex space-x-6">
+        <!-- Recorre los productos aleatorios con *ngFor -->
+        <div *ngFor="let product of displayedProducts" (click)="viewProductDetail(product.id)"
+          class="border rounded-lg overflow-hidden flex-shrink-0 w-52 md:w-64 transform hover:scale-105 hover:shadow-md transition duration-300 ease-in-out cursor-pointer shadow-md">
+          <div
+            class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white group-hover:opacity-75 flex justify-center items-center">
+            <img [src]="product.imagen" alt="{{ product.nombre }}" class="w-full h-48 object-contain">
           </div>
-          <p class="text-black font-bold text-xl">$240.000</p>
-        </div>
-      </div>
-
-      <!-- Producto 2 -->
-      <div class="border rounded-lg overflow-hidden flex-shrink-0 w-52 md:w-64">
-        <img src="https://picsum.photos/221/200" alt="Producto 2" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-lg font-bold">Producto 2</h3>
-          <div class="flex items-center">
-            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
-            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
-            <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
-            <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
-            <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
+          <div class="p-4">
+            <h3 class="text-lg font-bold">{{ product.nombre }}</h3>
+            <div class="flex gap-2">
+              <p class="text-blueColor font-semibold text-lg">Marca:</p>
+              <p class="text-gray-800 font-bold text-lg">{{ product.marca }}</p>
+            </div>
+            <p class="my-1 text-sm text-gray-500">
+              {{ product.descripcion | slice:0:50 }}<span *ngIf="product.descripcion.length > 50">...</span>
+            </p>
           </div>
-          <p class="text-black font-bold text-xl">$130.000</p>
-        </div>
-      </div>
-
-      <!-- Producto 3 -->
-      <div class="border rounded-lg overflow-hidden flex-shrink-0 w-52 md:w-64">
-        <img src="https://picsum.photos/219/199" alt="Producto 3" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-lg font-bold">Producto 3</h3>
-          <div class="flex items-center">
-            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
-            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
-            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
-            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
-            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
-          </div>
-          <p class="text-black font-bold text-xl">$139.000</p>
-        </div>
-      </div>
-
-      <!-- Producto 4 -->
-      <div class="border rounded-lg overflow-hidden flex-shrink-0 w-52 md:w-64">
-        <img src="https://picsum.photos/220/199" alt="Producto 4" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-lg font-bold">Producto 4</h3>
-          <div class="flex items-center">
-            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
-            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
-            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
-            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
-            <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.372 1.24.588 1.81l-3.386 2.462a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.462a1 1 0 00-1.175 0l-3.386 2.462c-.784.57-1.838-.197-1.539-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.732 9.4c-.784-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
-            </svg>
-          </div>
-          <p class="text-black font-bold text-xl">$8.000</p>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Botón "Ver todo" -->
-  <div class="flex justify-center mt-8">
-    <a href="#" class="bg-white border border-blueColor text-blueColor px-10 py-1.5 rounded-full text-center font-bold">Ver todo</a>
+    <!-- Botón "Ver todo" centrado -->
+    <div class="flex justify-center mt-4">
+      <a href="/productos">
+        <button class="bg-white mt-4 mb-4 border border-blueColor text-blueColor rounded-2xl px-8 py-1 hover:bg-blueColor hover:text-white transition duration-300 font-bold">
+        Ver todo
+        </button>
+      </a>
+    </div>
   </div>
-</div>
 </div>

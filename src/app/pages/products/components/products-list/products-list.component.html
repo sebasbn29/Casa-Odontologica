@@ -1,51 +1,40 @@
 <div class="p-4">
   <h2 class="text-2xl font-bold mb-6 mt-2 text-blueColor">Todos los productos</h2>
-  <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-2">
-    <div *ngFor="let product of products" class="group relative bg-white  rounded-lg overflow-hidden transform hover:scale-105 hover:shadow-xl transition duration-300 ease-in-out">
+
+  <!-- Indicador de carga -->
+  <div *ngIf="loading" class="text-center my-4">
+    <p>Buscando productos...</p>
+    <div class="spinner"></div> <!-- Aquí puedes agregar un spinner o algún símbolo de carga -->
+  </div>
+
+  <!-- Mensaje de "No hay resultados" -->
+  <div *ngIf="!loading && noResults" class="text-center my-4 text-red-500">
+    No se encontraron productos con esta propiedad.
+  </div>
+
+  <!-- Lista de productos -->
+  <div *ngIf="!loading && !noResults" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
+    <div *ngFor="let product of filteredProducts" (click)="viewProductDetail(product.id)"
+      class="group relative bg-white rounded-lg overflow-hidden transform hover:scale-105 hover:shadow-xl transition duration-300 ease-in-out cursor-pointer">
+
+      <!-- Contenido del producto -->
       <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white lg:aspect-none group-hover:opacity-75 lg:h-80 2xl:h-48 flex justify-center items-center">
-        <img src="https://odontoequiposdma.com/assets/slider/portatil3.png" alt="Front of men&#039;s Basic Tee in black." class="h-5/6 w-5/6 object-cover object-center lg:h-5/6 lg:w-5/6">
+        <img [src]="product.imagen" alt="{{product.nombre}}" class="h-5/6 w-5/6 object-cover object-center lg:h-5/6 lg:w-5/6">
       </div>
       <div class="m-4 flex justify-between">
         <div>
           <h3 class="text-lg font-bold text-black">
-            <a href="#">
-              <span aria-hidden="true" class="absolute inset-0"></span>
-              {{product.name}}
-            </a>
+            {{product.nombre}}
           </h3>
-          <p class="my-1 text-sm text-gray-500">{{product.description}}</p>
-          <p class="text-xl font-medium text-black">$ {{product.price}}.000</p>
+          <p class="my-1 text-sm text-gray-500">
+            {{ product.descripcion | slice:0:60 }}<span *ngIf="product.descripcion.length > 60">...</span>
+          </p>
+          <p class="text-xl font-medium text-black">
+            <span>Marca: </span>
+            <span class="group-hover:text-yellow-500">{{product.marca}}</span> <!-- Marca en amarillo solo en hover -->
+          </p>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="flex items-center space-x-1 text-center justify-center my-12">
-    <!-- Botón anterior -->
-    <button class="px-4 py-2 text-gray-500 bg-gray-200 rounded-md hover:bg-gray-300">
-      &lt;
-    </button>
-
-    <!-- Página activa -->
-    <button class="px-4 py-2 text-white bg-blueColor rounded-md">
-      1
-    </button>
-
-    <!-- Otras páginas -->
-    <button class="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-100">
-      2
-    </button>
-    <button class="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-100">
-      ...
-    </button>
-    <button class="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-100">
-      13
-    </button>
-
-    <!-- Botón siguiente -->
-    <button class="px-4 py-2 text-white bg-gray-800 rounded-md hover:bg-gray-900">
-      &gt;
-    </button>
-  </div>
-
 </div>

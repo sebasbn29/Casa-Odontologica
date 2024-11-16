@@ -4,25 +4,143 @@
 
   <div class="mb-8">
     <h2 class="text-2xl font-semibold mb-2">Servicio al cliente</h2>
-    <p class="text-gray-800">Estamos aquí para ayudarte. Nuestro horario de atención es de lunes a viernes, de 8:00 a.m. a 6:00 p.m., y los sábados de 8:00 a.m. a 2:00 p.m. No dudes en contactarnos durante estos horarios para resolver cualquier duda o consulta que tengas.</p>
+    <p class="text-gray-800">Estamos aquí para ayudarte. Nuestro horario de atención es de lunes a viernes, de 8:00 a.m.
+      a 6:00 p.m., y los sábados de 8:00 a.m. a 2:00 p.m. No dudes en contactarnos durante estos horarios para resolver
+      cualquier duda o consulta que tengas.</p>
     <hr class="mt-4">
   </div>
 
   <div class="mb-8">
-    <h2 class="text-2xl font-semibold mb-2">¿A cuánto ascienden los gastos de envío?</h2>
-    <p class="text-gray-800">Los gastos de envío varían según la ubicación de entrega. El costo exacto se calculará en el proceso de pago, basado en tu dirección. Sin embargo, si tu compra supera los $250.000, el envío es completamente gratis, sin importar a dónde se envíe tu pedido.</p>
+    <h2 class="text-2xl font-semibold mb-2">¿Qué tipos de productos odontológicos ofrecen?</h2>
+    <p class="text-gray-800">Ofrecemos una amplia gama de productos para profesionales de la odontología, incluyendo
+      instrumentos, materiales para procedimientos dentales, equipos de esterilización, insumos de higiene oral y
+      productos desechables.</p>
     <hr class="mt-4">
   </div>
 
   <div class="mb-8">
-    <h2 class="text-2xl font-semibold mb-2">¿Cuánto tardará en llegar mi pedido?</h2>
-    <p class="text-gray-800">El tiempo de entrega depende de la ubicación de destino. Normalmente, los pedidos se procesan y se envían dentro de 1 a 2 días hábiles. Una vez enviado, el pedido puede tardar entre 3 y 7 días hábiles en llegar a su destino, dependiendo de la región.</p>
+    <h2 class="text-2xl font-semibold mb-2">¿Ofrecen descuentos?</h2>
+    <p class="text-gray-800">Si, Tenemos descuentos en productos seleccionados, de igual manera puedes estar pendiente a
+      nuestras redes sociales para enterarte de nuestros descuentos y ofertas.</p>
     <hr class="mt-4">
   </div>
 
-  <div class="mb-8">
+  <!-- <div class="mb-8">
     <h2 class="text-2xl font-semibold mb-2">¿Qué tengo que hacer si recibí un producto diferente a lo que ordené?</h2>
-    <p class="text-gray-800">Si recibiste un producto diferente al que ordenaste, lamentamos el inconveniente. Por favor, ponte en contacto con nuestro equipo de Atención al Cliente dentro de las 48 horas posteriores a la recepción del pedido. Estaremos encantados de ayudarte a resolver el problema, ya sea coordinando un reemplazo rápido o gestionando la devolución del artículo incorrecto.</p>
+    <p class="text-gray-800">Si recibiste un producto diferente al que ordenaste, lamentamos el inconveniente. Por
+      favor, ponte en contacto con nuestro equipo de Atención al Cliente dentro de las 48 horas posteriores a la
+      recepción del pedido. Estaremos encantados de ayudarte a resolver el problema, ya sea coordinando un reemplazo
+      rápido o gestionando la devolución del artículo incorrecto.</p>
     <hr class="mt-4">
-  </div>
+  </div> -->
+
+ <!-- Formulario de contacto -->
+<div class="border p-5">
+  <h2 class="text-2xl font-bold mb-4 text-blueColor">Contáctanos</h2>
+
+  <form (ngSubmit)="sendEmail()" #contactForm="ngForm">
+    <!-- Campos del formulario -->
+    <div class="mb-4">
+      <label for="nombre" class="block text-gray-700 font-bold">
+        Nombre <span class="text-red-500">*</span>
+      </label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+        [(ngModel)]="contactData.nombre"
+        required
+        #nombre="ngModel"
+      />
+      <p *ngIf="nombre.invalid && nombre.touched" class="text-red-500 text-sm mt-1">
+        El nombre es obligatorio.
+      </p>
+    </div>
+
+    <div class="mb-4">
+      <label for="telefono" class="block text-gray-700 font-bold">
+        Número de celular <span class="text-red-500">*</span>
+      </label>
+      <input
+        type="tel"
+        id="telefono"
+        name="telefono"
+        class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+        [(ngModel)]="contactData.telefono"
+        required
+        #telefono="ngModel"
+      />
+      <p *ngIf="telefono.invalid && telefono.touched" class="text-red-500 text-sm mt-1">
+        El número de celular es obligatorio.
+      </p>
+    </div>
+
+    <div class="mb-4">
+      <label for="email" class="block text-gray-700 font-bold">
+        Correo electrónico <span class="text-red-500">*</span>
+      </label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+        [(ngModel)]="contactData.email"
+        required
+        #email="ngModel"
+      />
+      <p *ngIf="email.invalid && email.touched" class="text-red-500 text-sm mt-1">
+        El correo electrónico es obligatorio.
+      </p>
+    </div>
+
+    <div class="mb-4">
+      <label for="mensaje" class="block text-gray-700 font-bold">
+        Mensaje <span class="text-red-500">*</span>
+      </label>
+      <textarea
+        id="mensaje"
+        name="mensaje"
+        class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+        [(ngModel)]="contactData.mensaje"
+        required
+        #mensaje="ngModel"
+      ></textarea>
+      <p *ngIf="mensaje.invalid && mensaje.touched" class="text-red-500 text-sm mt-1">
+        El mensaje es obligatorio.
+      </p>
+    </div>
+
+    <div class="mb-6">
+      <label for="archivo" class="block text-gray-700 font-bold mb-2">
+        Adjuntar archivo, foto o prueba (opcional):
+      </label>
+      <div class="relative">
+        <input type="file" id="archivo" (change)="onFileSelected($event)" class="hidden" />
+        <label
+          for="archivo"
+          class="flex items-center justify-center w-full px-4 py-2 bg-blueColor text-white border border-blueColor rounded cursor-pointer hover:bg-gray-600"
+        >
+          Subir archivo
+        </label>
+        <p *ngIf="selectedFile" class="mt-2 text-sm text-gray-500">Archivo seleccionado: {{ selectedFile.name }}</p>
+      </div>
+    </div>
+
+    <!-- Botón de enviar -->
+    <div class="flex items-center">
+      <button
+        type="submit"
+        class="bg-white hover:text-white text-blueColor border border-blueColor py-2 cursor-pointer px-6 rounded-lg hover:bg-blueColor shadow-md transition duration-300 ease-in-out"
+        [disabled]="contactForm.invalid || isLoading"
+      >
+        Enviar
+      </button>
+
+      <!-- Spinner de carga -->
+      <div *ngIf="isLoading" class="ml-4">
+        <div class="animate-spin h-6 w-6 border-4 border-blue-500 border-t-transparent rounded-full"></div>
+      </div>
+    </div>
+  </form>
 </div>

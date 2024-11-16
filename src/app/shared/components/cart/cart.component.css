@@ -1,0 +1,7 @@
+:host {
+  position: relative;
+}
+
+div {
+  z-index: 50;
+}

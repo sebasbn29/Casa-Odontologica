@@ -27,7 +27,7 @@
 </div>
 
 <!-- Sección de Filtros Estática para pantallas grandes -->
-<div *ngIf="!isSmallScreen" class="hidden md:block w-full  bg-white p-6 my-6 shadow-lg">
+<div *ngIf="!isSmallScreen" class="hidden md:block w-full bg-white p-6 my-6 shadow-lg">
   <ng-container *ngTemplateOutlet="filterContent"></ng-container>
 </div>
 
@@ -41,7 +41,8 @@
     <div class="flex flex-col">
       <a *ngFor="let category of categories" href="#"
          class="text-black hover:underline mb-1"
-         (click)="$event.preventDefault();">
+         [class.font-bold]="selectedCategory === category"
+         (click)="selectCategory(category); $event.preventDefault();">
         {{ category }}
       </a>
     </div>
@@ -61,9 +62,9 @@
     </div>
   </div>
 
-  <!-- Botón Aplicar Filtros -->
-  <button (click)="applyFilters()"
-          class="w-full bg-yellowColor text-white p-2 rounded mt-4 hover:bg-orange-400 transition-all duration-300">
-    Aplicar Filtros
-  </button>
+  <!-- Mensaje de Filtros Activos -->
+  <div *ngIf="hasActiveFilters()" class="text-sm text-green-500 mb-4">
+    Filtros aplicados. <a href="#" (click)="clearFilters(); $event.preventDefault();" class="underline text-red-500">Limpiar filtros</a>
+  </div>
+
 </ng-template>
