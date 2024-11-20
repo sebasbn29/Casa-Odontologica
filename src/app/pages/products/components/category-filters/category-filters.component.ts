@@ -9,7 +9,7 @@ import { SearchService } from '../../../../shared/services/search.service';
 export class CategoryFiltersComponent implements OnInit {
   isFilterOpen = false;
   isSmallScreen = true;
-  categories = ['Brackets', 'Alambres', 'Sujeción', 'Herramientas', 'Accesorios', 'Materiales'];
+  categories = ['Ortodoncia', 'Restaurativos', 'Equipos', 'Materiales'];
   brands = ['Eufar', 'Dentsply Sirona', 'Gospa'];
   selectedBrands: string[] = [];
   selectedCategory: string | null = null;
