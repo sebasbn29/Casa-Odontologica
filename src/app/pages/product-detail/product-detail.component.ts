@@ -44,9 +44,17 @@ export class ProductDetailComponent implements OnInit {
   currentLink = this.links[0];
 
   changeLink() {
+    // Rastrear clic en Google Analytics
+    gtag('event', 'click', {
+      event_category: 'WhatsApp Button',
+      event_label: 'User clicked WhatsApp link',
+    });
+
+    // Cambiar el enlace como ya lo tenías
     setTimeout(() => {
       this.currentLink = this.links[Math.floor(Math.random() * this.links.length)];
     }, 0);
   }
+
 
 }
