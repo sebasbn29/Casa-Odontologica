@@ -17,6 +17,7 @@ export class BestBrandsComponent implements OnInit {
     { src: '.././assets/images/brands/dentsplySirona.png', alt: 'Marca 6' },
     /* { src: '.././assets/images/brands/ivoclar.png', alt: 'Marca 7' }, */
     { src: '.././assets/images/brands/eufar.png', alt: 'Marca 1' },
+    { src: '.././assets/images/brands/densell.png', alt: 'Marca 4' },
   ];
 
   constructor() { }

@@ -14,14 +14,14 @@
 
   <!-- Lista de productos -->
   <div *ngIf="!loading && !noResults" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
-    <div *ngFor="let product of filteredProducts" (click)="viewProductDetail(product.id)"
+    <div *ngFor="let product of displayedProducts" (click)="viewProductDetail(product.id)"
       class="group relative bg-white rounded-lg overflow-hidden transform hover:scale-105 hover:shadow-xl transition duration-300 ease-in-out cursor-pointer">
 
       <!-- Contenido del producto -->
       <div
         class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white lg:aspect-none group-hover:opacity-75 lg:h-80 2xl:h-48 flex justify-center items-center">
-        <img [src]="product.imagen" alt="{{product.nombre}}"
-          class="h-5/6 w-5/6 object-cover object-center lg:h-5/6 lg:w-5/6"
+        <img [attr.loading]="'lazy'" [src]="product.imagen" alt="{{product.nombre}}"
+          class="h-5/6 w-5/6 object-contain object-center lg:h-5/6 lg:w-5/6"
           onerror="this.src='../././assets/images/logos_co/sin_foto_producto.png'">
       </div>
       <div class="m-4 flex justify-between">
@@ -40,4 +40,8 @@
       </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="loading" class="loading-more">
+  Cargando más productos...
 </div>
