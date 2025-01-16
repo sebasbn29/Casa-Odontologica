@@ -4,6 +4,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CartComponent } from './components/cart/cart.component';
 import { FormsModule } from '@angular/forms';
+import { InstagramFeedComponent } from './components/instagram-feed/instagram-feed.component';
 
 
 
@@ -11,7 +12,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     NavbarComponent,
     FooterComponent,
-    CartComponent
+    CartComponent,
+    InstagramFeedComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { FormsModule } from '@angular/forms';
   ],
   exports: [
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    InstagramFeedComponent
   ]
 })
 export class SharedModule { }

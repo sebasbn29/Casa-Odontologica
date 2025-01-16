@@ -9,6 +9,7 @@ import { BestBrandsComponent } from './components/best-brands/best-brands.compon
 import { ServicesHomeComponent } from './components/services-home/services-home.component';
 import { CustomerOpinionComponent } from './components/customer-opinion/customer-opinion.component';
 import { BackToTopComponent } from './components/back-to-top/back-to-top.component';
+import { SharedModule } from "../../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BackToTopComponent } from './components/back-to-top/back-to-top.compone
   ],
   imports: [
     CommonModule,
-  ],
+    SharedModule
+],
   exports: [
     NewProductsComponent,
   ]

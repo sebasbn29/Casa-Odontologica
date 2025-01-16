@@ -3,11 +3,14 @@
     <hr class="mb-8">
     <!-- Texto principal -->
     <h2 class="text-3xl font-bold uppercase mb-8 text-center text-blueColor">Las mejores marcas</h2>
-  <div class="relative text-center flex justify-center">
-    <div class="overflow-x-auto flex items-center space-x-6 lg:space-x-8 text-center">
-      <div *ngFor="let brand of brands" class="flex-shrink-0 w-28 h-auto flex items-center justify-center">
-        <img [src]="brand.src" [alt]="brand.alt" class="w-full h-auto object-contain">
+    <div class="relative text-center flex justify-center">
+      <div class="overflow-x-auto flex items-center space-x-6 lg:space-x-8 text-center">
+        <div routerLinkActive="router-link-active" *ngFor="let brand of brands"
+          class="flex-shrink-0 w-28 h-auto flex items-center justify-center">
+          <a href="productos">
+            <img [src]="brand.src" [alt]="brand.alt" class="w-full h-auto object-contain">
+          </a>
+        </div>
       </div>
     </div>
   </div>
-</div>
