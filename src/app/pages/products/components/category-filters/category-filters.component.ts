@@ -10,7 +10,7 @@ export class CategoryFiltersComponent implements OnInit {
   isFilterOpen = false;
   isSmallScreen = true;
   categories = ['Ortodoncia', 'Restaurativos', 'Equipos', 'Materiales'];
-  brands = ['Eufar', 'Dentsply Sirona', 'Gospa','Proquident','Densell'];
+  brands = ['Gospa', '3m', 'Dentsply Sirona','Eufar','Proquident','Densell'];
   selectedBrands: string[] = [];
   selectedCategory: string | null = null;
 
