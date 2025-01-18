@@ -1,0 +1,13 @@
+.group:hover .p-6 {
+  transform: translateY(-10px);
+  transition: transform 0.3s ease-in-out;
+}
+
+[data-aos] {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+}
